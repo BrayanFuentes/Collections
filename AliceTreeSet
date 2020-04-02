@@ -1,0 +1,34 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.TreeSet;
+
+public class Treemap2 {
+	public static void main(String[] args)
+	{
+		try 
+		{
+			String line;
+			TreeSet<String> book = new TreeSet<String>();
+			BufferedReader reader = new BufferedReader(new FileReader("Alice.txt"));
+			while((line = reader.readLine()) != null )
+			{
+				String[] parts = line.split(" ");
+				book.addAll(Arrays.asList(parts));
+			}
+			
+			for(String word : book)
+			{
+				System.out.println(word);
+			}
+			
+			reader.close();
+		}
+		catch(IOException e)
+		{
+			System.out.println("Something went wrong.");
+		}
+		
+	}
+}
