@@ -1,0 +1,31 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.HashSet;
+
+public class HashSet2 {
+	public static void main(String[] args)
+	{
+		try 
+		{
+			String line;
+			BufferedReader reader = new BufferedReader(new FileReader("Alice.txt"));
+			HashSet<String> book = new HashSet<>();
+			while((line = reader.readLine())!= null)
+			{
+				String[] words = line.split(" ");
+				book.addAll(Arrays.asList(words));
+			}
+			for(String word : book)
+			{
+				System.out.println(word);
+			}
+			reader.close();
+		}
+		catch(IOException e)
+		{
+			System.out.println("Somethine went wrong.");
+		}
+	}
+}
