@@ -25,10 +25,12 @@ public class Treemap {
 			}
 			
 			TreeMap<String, Integer> map = new TreeMap<String, Integer>();		
-			
+			//loops through until there isn't a line left to read
 			while((line =reader2.readLine()) !=null)
 			{
 				int sum = 0;
+				//loops depending on the length of the current word and will take the value of each character in the word 
+				//adding the value of each character to sum.
 				for(int i =0; i < line.length();i++)
 				{
 					line = line.toUpperCase();
@@ -38,7 +40,7 @@ public class Treemap {
 				line = line.toLowerCase();
 				map.put(line, sum);
 			}
-			
+			//iterates through the key and the values in the treemap
 			Iterator<String> b = map.keySet().iterator();
 			Iterator<Integer> c = map.values().iterator();
 			while(b.hasNext() && c.hasNext())
