@@ -12,12 +12,14 @@ public class Treemap2 {
 			String line;
 			TreeSet<String> book = new TreeSet<String>();
 			BufferedReader reader = new BufferedReader(new FileReader("Alice.txt"));
+			//loops through until there isn't a line left to read
 			while((line = reader.readLine()) != null )
 			{
+				//splits the line into seperate parts and puts them into an array. Then it add the array into the treeset
 				String[] parts = line.split(" ");
 				book.addAll(Arrays.asList(parts));
 			}
-			
+			//loops through the treeset and prints each element
 			for(String word : book)
 			{
 				System.out.println(word);
