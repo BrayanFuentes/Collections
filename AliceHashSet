@@ -12,11 +12,14 @@ public class HashSet2 {
 			String line;
 			BufferedReader reader = new BufferedReader(new FileReader("Alice.txt"));
 			HashSet<String> book = new HashSet<>();
+			//loops through until there isn't a line left to read
 			while((line = reader.readLine())!= null)
 			{
+				//splits the line into an array and the adds the whole array to the hashset
 				String[] words = line.split(" ");
 				book.addAll(Arrays.asList(words));
 			}
+			//loops through the hashset and prints the each element 
 			for(String word : book)
 			{
 				System.out.println(word);
