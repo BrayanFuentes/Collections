@@ -7,17 +7,33 @@ import java.util.Iterator;
 public class Hashmap {
 	public static void main(String[] args)
 	{
-		
-		long time1,time2;
+		long time1,time2,time3,time4;
 		time1 = System.currentTimeMillis();
 		String line;
 		try
 		{
+			
+			HashMap<String,Integer> first = new HashMap<>();
+			BufferedReader reader0 = new BufferedReader(new FileReader("words.txt"));
+			while((line = reader0.readLine()) != null)
+			{
+				first.put(line, 0);
+			}
+			
+			Iterator<Integer> a = first.values().iterator();
+			while(a.hasNext())
+			{
+				System.out.println(a.next());
+			}
+			time2 = System.currentTimeMillis();
+			System.out.println("The time this took to read the file and set each vlaue to 0 in the treemap: " + (time2-time1)+" millis.");
+			
+			time3 = System.currentTimeMillis();
+			
 			HashMap<Character, Integer> scrambleValues = new HashMap<>();
 			BufferedReader reader = new BufferedReader(new FileReader("values.txt"));
 			BufferedReader reader2 = new BufferedReader(new FileReader("words.txt"));
-			//reads the values file and splits the line into parts. It'll take the second part of the line that it's looking at 
-			//and convert it into an int.
+			//reads the values file and splits the line into two parts a char and an int 
 			while((line = reader.readLine()) != null)
 			{
 				String[] parts = line.split(" ");
@@ -25,12 +41,10 @@ public class Hashmap {
 			}
 
 			HashMap<String, Integer> map = new HashMap<>();		
-			// this will loop through reading the words.txt file until there isn't a line left to read
+
 			while((line =reader2.readLine()) !=null)
 			{
 				int sum = 0;
-				//loops depending on the length of the current word and will take the value of each character in the word 
-				//adding the value of each character to sum.
 				for(int i =0; i < line.length();i++)
 				{
 					line = line.toUpperCase();
@@ -38,24 +52,24 @@ public class Hashmap {
 					sum += scrambleValues.get(x);
 				}
 				line = line.toLowerCase();
-				map.put(line, sum); //adds the word and the sum to the hashset
+				map.put(line, sum);
 			}
-			//this allows me to iterate through the hashset and print out both the value and the key of the hashset
+
 			Iterator<String> b = map.keySet().iterator();
 			Iterator<Integer> c = map.values().iterator();
 			while(b.hasNext() && c.hasNext())
 			{
 				System.out.println(b.next()+ " ---> " + c.next());
 			}
-			time2 = System.currentTimeMillis();
-			//prints out the time it took to do all of that in milliseconds
-			System.out.println("The time this took to run was: " + (time2-time1)+" millis.");
+
+			time4 = System.currentTimeMillis();
+			System.out.println("The time this took to run was: " + (time4-time3)+" millis.");
+			reader0.close();
 			reader.close();
 			reader2.close();
 		}
 		catch(IOException e)
 		{
-			//pretty self explantory 
 			System.out.println("Well something happened. Just not the intended thing.");
 		}
 	}
