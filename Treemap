@@ -8,12 +8,30 @@ public class Treemap {
 
 	public static void main(String[] args)
 	{
-		long time1,time2;
+		long time1,time2,time3,time4;
 		time1 = System.currentTimeMillis();
 		String line;
 		try
 		{
-
+			//puts the words into the treemap and sets their values to 0
+			TreeMap <String, Integer> one = new TreeMap<String,Integer>();
+			BufferedReader reader0 = new BufferedReader(new FileReader("words.txt"));
+			while((line = reader0.readLine())!= null)
+			{
+				one.put(line,0);
+			}
+			
+			Iterator<Integer> a = one.values().iterator();
+			while(a.hasNext())
+			{
+				System.out.println(a.next());
+			}
+			
+			time2 = System.currentTimeMillis();
+			System.out.println("The time this took to read the file and set each vlaue to 0 in the treemap: " + (time2-time1)+" millis.");
+			
+			
+			time3= System.currentTimeMillis();
 			TreeMap<Character, Integer> scrambleValues = new TreeMap<Character, Integer>();
 			BufferedReader reader = new BufferedReader(new FileReader("values.txt"));
 			BufferedReader reader2 = new BufferedReader(new FileReader("words.txt"));
@@ -25,12 +43,10 @@ public class Treemap {
 			}
 			
 			TreeMap<String, Integer> map = new TreeMap<String, Integer>();		
-			//loops through until there isn't a line left to read
+			
 			while((line =reader2.readLine()) !=null)
 			{
 				int sum = 0;
-				//loops depending on the length of the current word and will take the value of each character in the word 
-				//adding the value of each character to sum.
 				for(int i =0; i < line.length();i++)
 				{
 					line = line.toUpperCase();
@@ -40,16 +56,17 @@ public class Treemap {
 				line = line.toLowerCase();
 				map.put(line, sum);
 			}
-			//iterates through the key and the values in the treemap
+			
 			Iterator<String> b = map.keySet().iterator();
 			Iterator<Integer> c = map.values().iterator();
 			while(b.hasNext() && c.hasNext())
 			{
-				System.out.println(b.next()+ "  " + c.next());
+				System.out.println(b.next()+ " ---> " + c.next());
 			}
 			
-			time2 = System.currentTimeMillis();
-			System.out.println("The time this took to run was: " + (time2-time1)+" millis.");
+			time4 = System.currentTimeMillis();
+			System.out.println("The time this took to run was: " + (time4-time3)+" millis.");
+			reader0.close();
 			reader.close();
 			reader2.close();
 		}
