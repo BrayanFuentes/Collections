@@ -9,11 +9,12 @@ public class Treemap {
 	public static void main(String[] args)
 	{
 		long time1,time2,time3,time4;
-		time1 = System.currentTimeMillis();
+		time1 = System.nanoTime();
 		String line;
 		try
 		{
 			//puts the words into the treemap and sets their values to 0
+			System.out.println("Using TreeMap");
 			TreeMap <String, Integer> one = new TreeMap<String,Integer>();
 			BufferedReader reader0 = new BufferedReader(new FileReader("words.txt"));
 			while((line = reader0.readLine())!= null)
@@ -21,17 +22,11 @@ public class Treemap {
 				one.put(line,0);
 			}
 			
-			Iterator<Integer> a = one.values().iterator();
-			while(a.hasNext())
-			{
-				System.out.println(a.next());
-			}
-			
-			time2 = System.currentTimeMillis();
-			System.out.println("The time this took to read the file and set each vlaue to 0 in the treemap: " + (time2-time1)+" millis.");
+			time2 = System.nanoTime();
+			System.out.println("Time for loading into map: " + (time2-time1)+" nano-seconds.");
 			
 			
-			time3= System.currentTimeMillis();
+			time3= System.nanoTime();
 			TreeMap<Character, Integer> scrambleValues = new TreeMap<Character, Integer>();
 			BufferedReader reader = new BufferedReader(new FileReader("values.txt"));
 			BufferedReader reader2 = new BufferedReader(new FileReader("words.txt"));
@@ -64,8 +59,8 @@ public class Treemap {
 				System.out.println(b.next()+ " ---> " + c.next());
 			}
 			
-			time4 = System.currentTimeMillis();
-			System.out.println("The time this took to run was: " + (time4-time3)+" millis.");
+			time4 = System.nanoTime();
+			System.out.println("The time for searching map: " + (time4-time3)+" nano-seconds.");
 			reader0.close();
 			reader.close();
 			reader2.close();
