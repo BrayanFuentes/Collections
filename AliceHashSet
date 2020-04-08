@@ -7,8 +7,10 @@ import java.util.HashSet;
 public class HashSet2 {
 	public static void main(String[] args)
 	{
+		long time1,time2,time3,time4;
 		try 
 		{
+			time1 = System.nanoTime();
 			String line;
 			BufferedReader reader = new BufferedReader(new FileReader("Alice.txt"));
 			HashSet<String> book = new HashSet<>();
@@ -24,7 +26,18 @@ public class HashSet2 {
 			{
 				System.out.println(word);
 			}
+			time2 = System.nanoTime();
 			reader.close();
+			long mil1 = (long) ((time2 - time1)/1e6);
+			System.out.println("Elapsed time for loading hash set: " + mil1 + "milliseconds");
+			time3 = System.nanoTime();
+			for(int i = 0; i<100;i++)
+			{
+				book.contains("Cheshire");
+			}
+			time4 = System.nanoTime();
+			long mil2 = (long) ((time4 - time3)/1e6);
+			System.out.println("Elapsed time for searching hash set: " + mil2 + "milliseconds");
 		}
 		catch(IOException e)
 		{
