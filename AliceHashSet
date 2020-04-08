@@ -28,7 +28,7 @@ public class HashSet2 {
 		}
 		catch(IOException e)
 		{
-			System.out.println("Somethine went wrong.");
+			System.out.println("Something went wrong.");
 		}
 	}
 }
