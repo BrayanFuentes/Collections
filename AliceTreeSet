@@ -1,16 +1,24 @@
+/**
+ * @author Brayan Fuentes and Curtis Nishihira
+ * Date: April 9, 2020
+ * Purpose: Insert all the words from Alice in Wonderland into a treeset and record how much time it took to search for a word 100 times. 
+ * Input: No user input 
+ * Output: Prints onto the console the words in the book in no certain order and the time it took for it to load into the treemap and the time it took to search for a certain word 100 times
+ */
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.TreeSet;
 
-public class Treemap2 {
+public class Treeset1 {
 	public static void main(String[] args)
 	{
 		long time1,time2,time3,time4;
 		try 
 		{
-			time1 = System.nanoTime();
+			time1 = System.currentTimeMillis();
 			String line;
 			TreeSet<String> book = new TreeSet<String>();
 			BufferedReader reader = new BufferedReader(new FileReader("Alice.txt"));
@@ -26,18 +34,18 @@ public class Treemap2 {
 			{
 				System.out.println(word);
 			}
-			time2 = System.nanoTime();
+			
+			time2 = System.currentTimeMillis();
 			reader.close();
-			long mil1 = (long) ((time2 - time1)/1e6);
-			System.out.println("Elapsed time for loading hash set: " + mil1 + "milliseconds");
+			System.out.println("Elapsed time for loading hash set: " + (time2-time1) + " milliseconds");
 			time3 = System.nanoTime();
+			//looks for the word "Cheshire" a 100 times and then printing onto the console how long it took in nano-seconds
 			for(int i = 0; i<100;i++)
 			{
 				book.contains("Cheshire");
 			}
 			time4 = System.nanoTime();
-			long mil2 = (long) ((time4 - time3)/1e6);
-			System.out.println("Elapsed time for searching hash set: " + mil2 + "milliseconds");
+			System.out.println("Elapsed time for searching hash set: " + (time4-time3) + " nano-seconds");
 		}
 		catch(IOException e)
 		{
