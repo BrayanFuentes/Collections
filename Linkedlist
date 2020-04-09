@@ -17,8 +17,8 @@ public class Linkedlist
 		
 		try
 		{
-			Scanner scan = new Scanner(file);
 			//will scan the file and add each line to the linkedlist
+			Scanner scan = new Scanner(file);
 			while(scan.hasNextLine())
 			{
 				list.add(scan.nextLine());
@@ -30,7 +30,8 @@ public class Linkedlist
 			{
 				System.out.println(iterator.next());
 			}
-			//traverses through the linkedlist from end to beginning
+			//traverses through the linkedlist from end to beginning 
+
 			while(iterator.hasPrevious())
 			{
 				System.out.println(iterator.previous());
@@ -39,20 +40,7 @@ public class Linkedlist
 			System.out.println("LinkedList time: "+(time2-time1)+" nanoseconds");
 			Scanner scan2 = new Scanner(System.in);
 			System.out.println("How many groups? ");
-			boolean on = true;
-			int teams = 0;
-			while(on)
-			{
-				try
-				{
-					teams = Integer.parseInt(scan2.next());
-					on = false;
-				}
-				catch(NumberFormatException e)
-				{
-					System.out.println("Inavlid Input try again: ");
-				}
-		 	}	
+			int teams = Integer.parseInt(scan2.next());
 			time3 = System.nanoTime();
 			for(int i = 0; i<teams; i++)
 			{
@@ -68,29 +56,7 @@ public class Linkedlist
 			time4 = System.nanoTime();
 			System.out.println("Time to load the array list is: "+ (time4-time3)+" nanoseconds");
 			System.out.println("Which element do you want to work with. Enter a number between 1 and 100): ");
-			int element = 0;
-			on = true;
-			while(on)
-			{
-				try
-				{
-					element = Integer.parseInt(scan2.next());
-					if(element<100&&element>0)
-					{
-						on = false;
-					}
-					else
-					{
-						Integer.parseInt("A");
-					}
-				}
-				catch(NumberFormatException e)
-				{
-					System.out.println("Inavlid Input try again: ");
-				}
-				
-		 	}
-			System.out.println("Which element do you want to work with. Enter a number between 1 and 100): ");
+			int element = Integer.parseInt(scan2.next());
 			time5 = System.nanoTime();
 			for(int i = 0; i<teams;i++)
 			{
@@ -114,6 +80,8 @@ public class Linkedlist
 			}
 			time10 = System.nanoTime();
 			System.out.println("Time to get the random element is: "+ (time10-time9)+" nanoseconds");
+			scan.close();
+			scan2.close();
 		}
 		catch(FileNotFoundException e)
 		{
