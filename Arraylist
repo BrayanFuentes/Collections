@@ -36,7 +36,20 @@ public class Arraylist
 			System.out.println("ArrayList time: "+(time2-time1)+" nanoseconds");
 			Scanner scan2 = new Scanner(System.in);
 			System.out.println("How many groups? ");
-			int teams = Integer.parseInt(scan2.next());
+			boolean on = true;
+			int teams = 0;
+			while(on)
+			{
+				try
+				{
+					teams = Integer.parseInt(scan2.next());
+					on = false;
+				}
+				catch(NumberFormatException e)
+				{
+					System.out.println("Inavlid Input try again: ");
+				}
+		 	}	
 			time3 = System.nanoTime();
 			for(int i = 0; i<teams; i++)
 			{
@@ -52,7 +65,29 @@ public class Arraylist
 			time4 = System.nanoTime();
 			System.out.println("Time to load the array list is: "+ (time4-time3)+" nanoseconds");
 			System.out.println("Which element do you want to work with. Enter a number between 1 and 100): ");
-			int element = Integer.parseInt(scan2.next());
+			int element = 0;
+			on = true;
+			while(on)
+			{
+				try
+				{
+					element = Integer.parseInt(scan2.next());
+					if(element<100&&element>0)
+					{
+						on = false;
+					}
+					else
+					{
+						Integer.parseInt("A");
+					}
+				}
+				catch(NumberFormatException e)
+				{
+					System.out.println("Inavlid Input try again: ");
+				}
+				
+		 	}
+			System.out.println("Which element do you want to work with. Enter a number between 1 and 100): ");
 			time5 = System.nanoTime();
 			for(int i = 0; i<teams;i++)
 			{
@@ -76,8 +111,6 @@ public class Arraylist
 			}
 			time10 = System.nanoTime();
 			System.out.println("Time to get the random element is: "+ (time10-time9)+" nanoseconds");
-			scan.close();
-			scan2.close();
 		}
 		catch(FileNotFoundException e)
 		{
