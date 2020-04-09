@@ -76,6 +76,8 @@ public class Arraylist
 			}
 			time10 = System.nanoTime();
 			System.out.println("Time to get the random element is: "+ (time10-time9)+" nanoseconds");
+			scan.close();
+			scan2.close();
 		}
 		catch(FileNotFoundException e)
 		{
