@@ -67,7 +67,7 @@ public class Treemap {
 			{
 				System.out.println(b.next()+ " ---> " + c.next());
 			}
-			////Gets the current time in nano-seconds and it will print onto the console the total time it took the file to be loaded into a treemap with all their values.
+			//Gets the current time in nano-seconds and it will print onto the console the total time it took the file to be loaded into a treemap with all their values.
 			time4 = System.nanoTime();
 			System.out.println("The time for searching map: " + (time4-time3)+" nano-seconds.");
 			reader0.close();
