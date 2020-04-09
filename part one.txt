@@ -1,0 +1,8 @@
+Part One: 
+When it came to loading the data into a data structure, the HashMap was more efficient. It was about 510,600 nano-seconds faster than its counter part. However when it came to more efficient for searching data, the TreeMap was faster than the HashMap data structure. The TreeMap was 437,300 nano-seconds faster than the HashMap data structure.
+
+Part Two:
+When it came to loading the data into a data structure, the HashSet was more efficient. It was about 12 milliseconds faster than its counter part. It was also even faster for searching data. The HashSet was 81,600 nano-seconds faster than the TreeSet data structure.
+
+Part Three:
+The ArrayList was more efficient for looping through the entire collection. When it came to getting the same specific element, the arraylist was faster. As well as when it came to adding a same specific element and getting to same random element. The arraylist was overall faster in each operations when the inputs were the same for each run of the programs.
