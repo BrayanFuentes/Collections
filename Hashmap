@@ -1,3 +1,13 @@
+/**
+ * @author Brayan Fuentes and Curtis Nishihira
+ * Date: April 9, 2020
+ * Purpose: To read the file and add the words into a hashmap and setting their values to 0. Then read another file 
+ *  with characters and values into a hashmap that will be used later to calculate the value of the each word from the first file
+ * Inputs: No user input
+ * Output: Will print onto the console each word from the words.txt and then their value next to them as well as the time it took for each part of this program
+ * to run.  
+ */
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -13,13 +23,14 @@ public class Hashmap {
 		try
 		{
 			System.out.println("Using HashMap");
+			//puts the words into the hashmap and sets their values to 0
 			HashMap<String,Integer> first = new HashMap<>();
 			BufferedReader reader0 = new BufferedReader(new FileReader("words.txt"));
 			while((line = reader0.readLine()) != null)
 			{
 				first.put(line, 0);
 			}
-			
+			//Gets the current time in nano-seconds and it will print onto the console the total time it took the file to be loaded into a hashmap with all their values being 0.
 			time2 = System.nanoTime();
 			System.out.println("Time for loading into map: " + (time2-time1)+" nano-seconds.");
 			
@@ -36,7 +47,8 @@ public class Hashmap {
 			}
 
 			HashMap<String, Integer> map = new HashMap<>();		
-
+			//The bufferedreader will read each string, but it for each string it will go character to character recording the values of each and adding it to sum.
+			//Then it will load the string and the sum that it has obtained in the for loop into a hashmap
 			while((line =reader2.readLine()) !=null)
 			{
 				int sum = 0;
@@ -49,7 +61,7 @@ public class Hashmap {
 				line = line.toLowerCase();
 				map.put(line, sum);
 			}
-
+			//This will iterate through the tree map printing though the hashmap printing onto the console the word and its value.
 			Iterator<String> b = map.keySet().iterator();
 			Iterator<Integer> c = map.values().iterator();
 			while(b.hasNext() && c.hasNext())
@@ -58,6 +70,7 @@ public class Hashmap {
 			}
 
 			time4 = System.nanoTime();
+			//Gets the current time in nano-seconds and it will print onto the console the total time it took the file to be loaded into a hashmap with all their values.
 			System.out.println("The time for searching map: " + (time4-time3)+" nano-seconds.");
 			reader0.close();
 			reader.close();
@@ -69,6 +82,3 @@ public class Hashmap {
 		}
 	}
 }
-
-
-
