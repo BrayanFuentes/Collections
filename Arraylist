@@ -4,8 +4,8 @@
 		long time1, time2, time3, time4, time5, time6, time7, time8, time9, time10;
 		File file = new File ("hunt.txt");
 		ArrayList<String> list = new ArrayList<String>();
-		ArrayList<ArrayList> t = new ArrayList<ArrayList>();
-		ListIterator<String> iterator = list.listIterator();
+		ArrayList<ArrayList<String>> t = new ArrayList<ArrayList<String>>();
+		
 		try
 		{
 			Scanner scan = new Scanner(file);
@@ -14,6 +14,7 @@
 				list.add(scan.nextLine());
 			}
 			time1 = System.nanoTime();
+			ListIterator<String> iterator = list.listIterator();
 			while(iterator.hasNext())
 			{
 				System.out.println(iterator.next());
@@ -31,9 +32,10 @@
 			for(int i = 0; i<teams; i++)
 			{
 				ArrayList<String>temp=new ArrayList<String>();
-				while(iterator.hasNext())
+				ListIterator<String> it = list.listIterator();
+				while(it.hasNext())
 				{
-					temp.add(iterator.next());
+					temp.add(it.next());
 				}
 				Collections.shuffle(temp);
 				t.add(temp);
@@ -57,7 +59,7 @@
 			time8 = System.nanoTime();
 			System.out.println("Time to add the " + element + "element is: "+ (time8-time7)+" nanoseconds");
 			Random rand = new Random();
-			int rand1 = rand.nextInt(101);
+			int rand1 = rand.nextInt(100);
 			time9 = System.nanoTime();
 			for(int i = 0; i<teams;i++)
 			{
