@@ -1,3 +1,13 @@
+/**
+ * @author Brayan Fuentes and Curtis Nishihira
+ * Date: April 9, 2020
+ * Purpose: To read the file and add the words into a treemap and setting their values to 0. Then read another file 
+ * with characters and values into a treemap that will be used later to calculate the value of the each word from the first file
+ * Inputs: No user input
+ * Output: Will print onto the console each word from the words.txt and then their value next to them as well as the time it took for each part of this program
+ * to run.  
+ */
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.TreeMap;
@@ -20,12 +30,10 @@ public class Treemap {
 			while((line = reader0.readLine())!= null)
 			{
 				one.put(line,0);
-			}
-			
+			}		
+			//Gets the current time in nano-seconds and it will print onto the console the total time it took the file to be loaded into a treemap with all their values being 0.
 			time2 = System.nanoTime();
 			System.out.println("Time for loading into map: " + (time2-time1)+" nano-seconds.");
-			
-			
 			time3= System.nanoTime();
 			TreeMap<Character, Integer> scrambleValues = new TreeMap<Character, Integer>();
 			BufferedReader reader = new BufferedReader(new FileReader("values.txt"));
@@ -38,7 +46,8 @@ public class Treemap {
 			}
 			
 			TreeMap<String, Integer> map = new TreeMap<String, Integer>();		
-			
+			//The bufferedreader will read each string, but it for each string it will go character to character recording the values of each and adding it to sum.
+			//Then it will load the string and the sum that it has obtained in the for loop into a treemap
 			while((line =reader2.readLine()) !=null)
 			{
 				int sum = 0;
@@ -51,14 +60,14 @@ public class Treemap {
 				line = line.toLowerCase();
 				map.put(line, sum);
 			}
-			
+			//This will iterate through the tree map printing though the treemap printing onto the console the word and its value.
 			Iterator<String> b = map.keySet().iterator();
 			Iterator<Integer> c = map.values().iterator();
 			while(b.hasNext() && c.hasNext())
 			{
 				System.out.println(b.next()+ " ---> " + c.next());
 			}
-			
+			////Gets the current time in nano-seconds and it will print onto the console the total time it took the file to be loaded into a treemap with all their values.
 			time4 = System.nanoTime();
 			System.out.println("The time for searching map: " + (time4-time3)+" nano-seconds.");
 			reader0.close();
