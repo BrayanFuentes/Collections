@@ -13,8 +13,8 @@ public class Linkedlist
 		long time1, time2, time3, time4, time5, time6, time7, time8, time9, time10;
 		File file = new File ("hunt.txt");
 		LinkedList<String> list = new LinkedList<String>();
-		LinkedList<LinkedList> t = new LinkedList<LinkedList>();
-		ListIterator<String> iterator = list.listIterator();
+		LinkedList<LinkedList<String>> t = new LinkedList<LinkedList<String>>();
+		
 		try
 		{
 			Scanner scan = new Scanner(file);
@@ -23,6 +23,7 @@ public class Linkedlist
 				list.add(scan.nextLine());
 			}
 			time1 = System.nanoTime();
+			ListIterator<String> iterator = list.listIterator();
 			while(iterator.hasNext())
 			{
 				System.out.println(iterator.next());
@@ -40,9 +41,10 @@ public class Linkedlist
 			for(int i = 0; i<teams; i++)
 			{
 				LinkedList<String>temp=new LinkedList<String>();
-				while(iterator.hasNext())
+				ListIterator<String> it = list.listIterator();
+				while(it.hasNext())
 				{
-					temp.add(iterator.next());
+					temp.add(it.next());
 				}
 				Collections.shuffle(temp);
 				t.add(temp);
@@ -66,7 +68,7 @@ public class Linkedlist
 			time8 = System.nanoTime();
 			System.out.println("Time to add the " + element + "element is: "+ (time8-time7)+" nanoseconds");
 			Random rand = new Random();
-			int rand1 = rand.nextInt(101);
+			int rand1 = rand.nextInt(100);
 			time9 = System.nanoTime();
 			for(int i = 0; i<teams;i++)
 			{
@@ -80,4 +82,6 @@ public class Linkedlist
 			e.printStackTrace();
 		}
 	}
+	
 }
+
